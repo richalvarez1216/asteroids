@@ -14,6 +14,9 @@ def main():
     # Instantiate a Player object in the middle of the screen
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
+    updatable = [player]
+    drawable = [player]
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             return
@@ -27,6 +30,9 @@ def main():
         player.update(dt)
         # fill the screen with black        
         screen.fill((0, 0, 0))
+
+        for obj in drawable:
+            obj.draw(screen)
 
         player.draw(screen)
         # Refresh the screen
